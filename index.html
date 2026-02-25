@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ôn tập Giữa kỳ 2 - Thầy Lâm</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Cấu hình MathJax -->
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            chtml: {
+                fontURL: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2'
+            }
+        };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+    </script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fdfbf7; /* Màu nền nhẹ nhàng */
+            overflow-x: hidden;
+        }
+
+        .font-story {
+            font-family: 'Lora', serif;
+        }
+
+        /* Yêu cầu Styling: Nút CTA (Pill-shaped, Gradient) */
+        .cta-button {
+            border-radius: 9999px; /* Pill shape */
+            background: linear-gradient(135deg, #fb7185 0%, #e11d48 100%); /* Màu hồng đào rực rỡ */
+            color: white;
+            font-weight: 600;
+            padding: 12px 32px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(225, 29, 72, 0.3), 0 2px 4px -1px rgba(225, 29, 72, 0.2);
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+        }
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 15px -3px rgba(225, 29, 72, 0.4), 0 4px 6px -2px rgba(225, 29, 72, 0.2);
+        }
+
+        /* Yêu cầu Styling: Nút Phụ (Rounded rect, solid) */
+        .secondary-button {
+            border-radius: 8px;
+            background-color: #facc15; /* Vàng mai nắng xuân */
+            color: #854d0e;
+            font-weight: 600;
+            padding: 10px 24px;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border: none;
+            cursor: pointer;
+        }
+        .secondary-button:hover {
+            background-color: #eab308; /* Đậm hơn */
+            box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+        }
+        .secondary-button.green {
+            background-color: #fb7185; /* Nút phụ mang màu hồng xuân */
+            color: white;
+        }
+        .secondary-button.green:hover {
+            background-color: #e11d48;
+        }
+
+        /* Styling Tabs Desktop */
+        .desktop-tab {
+            padding: 16px 24px;
+            font-weight: 600;
+            color: #4b5563;
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        .desktop-tab:hover {
+            color: #e11d48;
+            background-color: #fff1f2;
+        }
+        .active-tab {
+            color: #be123c;
+            border-bottom: 3px solid #e11d48;
+            background-color: #fff1f2;
+        }
+
+        /* Yêu cầu Styling: Tab Mobile */
+        .mobile-tab {
+            display: block;
+            padding: 16px 20px;
+            font-weight: 600;
+            color: #4b5563;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        .active-mobile-tab {
+            background-color: #ffe4e6; /* Nền hồng nhạt */
+            color: #9f1239; /* Chữ đỏ đậm */
+        }
+
+        /* Khung chứa nội dung tab */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Chỉnh scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #fda4af; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #fb7185; }
+    </style>
+</head>
+<body class="text-gray-800 antialiased h-screen flex flex-col">
+
+    <!-- TRANG MỞ ĐẦU (BÌA SÁCH) -->
+    <div id="cover-page" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-gradient-to-br from-rose-100 via-pink-50 to-red-100 transition-all duration-700 ease-in-out transform">
+        <div class="text-center p-8 bg-white/60 backdrop-blur-md rounded-3xl shadow-2xl border border-rose-200 max-w-2xl w-[90%]">
+            <div class="w-24 h-24 mx-auto mb-6 bg-rose-100 rounded-full flex items-center justify-center shadow-inner text-6xl">
+                🌸
+            </div>
+            <h2 class="text-xl text-rose-700 font-semibold tracking-wider uppercase mb-2">Đón Xuân Cùng KHTN 8</h2>
+            <h1 class="text-4xl md:text-5xl font-bold text-rose-900 mb-4 font-story">Khai Bút Đầu Năm<br>Ôn Tập Giữa Kỳ 2</h1>
+            <p class="text-lg text-gray-600 mb-8 italic">"Năm mới kiến thức đâm chồi, điểm mười rực rỡ như hoa mùa xuân." <br><span class="font-bold not-italic text-rose-800">- Thầy Lâm -</span></p>
+            <button onclick="startLearning()" class="cta-button text-lg">Khai Bút Ngay</button>
+        </div>
+        
+        <!-- Trang trí cánh hoa SVG -->
+        <svg class="absolute bottom-0 left-0 w-64 h-64 text-pink-200 opacity-50 pointer-events-none" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <path fill="currentColor" d="M42.7,-73.4C55.9,-66.3,67.6,-55.4,75.4,-42.2C83.2,-29,87.1,-14.5,84.7,-1.4C82.3,11.7,73.6,23.4,64.8,34.5C56,45.6,47.1,56.1,35.4,63.1C23.7,70.1,9.2,73.6,-4.8,71.7C-18.8,69.8,-32.3,62.5,-44.6,54.1C-56.9,45.7,-68.1,36.2,-74.6,23.8C-81.1,11.4,-82.9,-3.9,-78.5,-17.1C-74.1,-30.3,-63.5,-41.4,-51.6,-49.6C-39.7,-57.8,-26.5,-63.1,-13.2,-66.1C0.1,-69.1,13.4,-69.8,27.1,-71.4L42.7,-73.4Z" transform="translate(100 100)" />
+        </svg>
+    </div>
+
+    <!-- MAIN APP CONTAINER -->
+    <div class="flex-grow flex flex-col w-full h-full relative overflow-hidden">
+        
+        <!-- HEADER & NAVIGATION -->
+        <header class="bg-white shadow-sm z-30 relative">
+            <!-- Mobile Header Bar -->
+            <div class="flex justify-between items-center p-4 lg:hidden border-b border-rose-100">
+                <div class="flex items-center gap-2 text-rose-800 font-bold text-xl">
+                    <svg class="w-8 h-8 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"></path></svg>
+                    Lớp Thầy Lâm
+                </div>
+                <button id="hamburger-button" class="p-2 rounded-md hover:bg-rose-50 text-rose-700 transition focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+            </div>
+
+            <!-- Desktop Tabs (Hidden on mobile) -->
+            <div class="hidden lg:flex justify-center border-b border-rose-100 bg-white">
+                <nav class="flex space-x-2">
+                    <button class="desktop-tab active-tab" data-target="tab-intro" onclick="switchTab('tab-intro')">Giới thiệu</button>
+                    <button class="desktop-tab" data-target="tab-dong-dien" onclick="switchTab('tab-dong-dien')">1. Dòng Điện</button>
+                    <button class="desktop-tab" data-target="tab-hoa-hoc" onclick="switchTab('tab-hoa-hoc')">2. Acid - Base - Oxide</button>
+                    <button class="desktop-tab" data-target="tab-sinh-hoc" onclick="switchTab('tab-sinh-hoc')">3. Da & Mắt</button>
+                    <button class="desktop-tab text-yellow-600 hover:text-yellow-700" data-target="tab-kiem-tra" onclick="switchTab('tab-kiem-tra')">🧧 Lì Xì Khai Bút</button>
+                </nav>
+            </div>
+        </header>
+
+        <!-- MOBILE SLIDEBAR MENU -->
+        <div id="mobile-menu" class="fixed inset-y-0 left-0 w-64 bg-white shadow-2xl z-40 transform -translate-x-full transition-transform duration-300 ease-in-out lg:hidden flex flex-col">
+            <div class="p-4 border-b border-rose-100 flex justify-between items-center bg-rose-50">
+                <span class="font-bold text-rose-800">Danh mục ôn tập</span>
+                <button id="close-menu-button" class="p-1 text-gray-500 hover:text-red-500 rounded-full hover:bg-red-50">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            <nav class="flex-grow p-4 overflow-y-auto">
+                <button class="mobile-tab active-mobile-tab w-full text-left" data-target="tab-intro" onclick="switchTab('tab-intro')">Giới thiệu</button>
+                <button class="mobile-tab w-full text-left" data-target="tab-dong-dien" onclick="switchTab('tab-dong-dien')">1. Dòng Điện</button>
+                <button class="mobile-tab w-full text-left" data-target="tab-hoa-hoc" onclick="switchTab('tab-hoa-hoc')">2. Acid - Base - Oxide</button>
+                <button class="mobile-tab w-full text-left" data-target="tab-sinh-hoc" onclick="switchTab('tab-sinh-hoc')">3. Da & Mắt</button>
+                <hr class="my-4 border-rose-100">
+                <button class="mobile-tab w-full text-left text-yellow-700 bg-yellow-50" data-target="tab-kiem-tra" onclick="switchTab('tab-kiem-tra')">🧧 Lì Xì Khai Bút</button>
+            </nav>
+            <div class="p-4 bg-rose-800 text-white text-sm text-center">
+                Lớp học Thầy Lâm &copy; Xuân 2026
+            </div>
+        </div>
+        <!-- Lớp phủ tối cho mobile menu -->
+        <div id="mobile-overlay" class="fixed inset-0 bg-black/50 z-30 hidden lg:hidden opacity-0 transition-opacity duration-300"></div>
+
+        <!-- MAIN CONTENT AREA -->
+        <main class="flex-grow overflow-y-auto p-4 md:p-8 relative">
+            
+            <!-- TAB: GIỚI THIỆU -->
+            <div id="tab-intro" class="tab-content active max-w-4xl mx-auto">
+                <div class="bg-white rounded-2xl shadow-sm border border-rose-100 p-6 md:p-10 mb-8">
+                    <h2 class="text-3xl font-bold text-rose-800 mb-6 border-b-2 border-yellow-400 pb-2 inline-block">Lời ngỏ đầu Xuân từ Thầy Lâm</h2>
+                    
+                    <div class="flex flex-col md:flex-row gap-8 items-start">
+                        <div class="w-32 h-32 flex-shrink-0 bg-yellow-100 rounded-full border-4 border-white shadow-lg overflow-hidden flex items-center justify-center">
+                            <span class="text-5xl">👨‍🏫🌸</span>
+                        </div>
+                        <div class="flex-grow font-story text-lg leading-relaxed text-gray-700">
+                            <p class="mb-4">Chào các trò nhỏ của thầy! Cành đào, cành mai đã chúm chím búp non, báo hiệu một mùa xuân mới lại về. Nhân dịp đầu năm, thầy chúc các em một năm tràn đầy niềm vui và sự hứng khởi để tiếp tục khám phá thế giới tự nhiên.</p>
+                            
+                            <div class="bg-rose-50 border-l-4 border-rose-500 p-4 rounded-r-lg mb-4 italic">
+                                "Đầu xuân năm mới, có một bầy kiến nhỏ đi trẩy hội qua một dòng suối. Con kiến Vật Lý ngắm dòng nước chảy róc rách để đo lực, con kiến Hóa Học hít hà mùi hương hoa cỏ mùa xuân, còn con kiến Sinh Học thì say sưa ngắm đàn cá tung tăng bơi lội... Cuối cùng, chúng hiểu ra rằng: <strong>Bức tranh thiên nhiên mùa xuân thật trọn vẹn và thống nhất</strong>."
+                            </div>
+                            
+                            <p>Hôm nay, thầy trò ta sẽ cùng khai bút qua 3 trạm dừng chân: <strong>Dòng Điện</strong> (Vật Lý), <strong>Hóa Chất Cơ Bản</strong> (Hóa Học), và <strong>Cơ Thể Người</strong> (Sinh Học). Hãy chuẩn bị tinh thần, nhận lấy lì xì tri thức và nhấp vào các tab phía trên để bắt đầu hành trình nhé!</p>
+                            
+                            <div class="mt-8">
+                                <button onclick="switchTab('tab-dong-dien')" class="cta-button">Khai bút Bài 1: Dòng Điện</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 1: DÒNG ĐIỆN -->
+            <div id="tab-dong-dien" class="tab-content max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold text-rose-800 mb-6">Trạm 1: Dòng Điện - Dòng Suối Năng Lượng Đầu Năm</h2>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+                    <!-- Kiến thức -->
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-rose-100">
+                        <h3 class="text-xl font-bold text-yellow-600 mb-4 flex items-center gap-2">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z"></path></svg>
+                            Tóm tắt kiến thức
+                        </h3>
+                        <ul class="space-y-4 text-gray-700">
+                            <li><strong>Dòng điện</strong> là dòng chuyển dời có hướng của các hạt mang điện (như electron trong kim loại).</li>
+                            <li><strong>Cường độ dòng điện ($I$):</strong> Đo mức độ mạnh yếu của dòng điện. Đơn vị: Ampe (A).</li>
+                            <li><strong>Hiệu điện thế ($U$):</strong> Lực đẩy các hạt mang điện di chuyển. Đơn vị: Vôn (V).</li>
+                            <li><strong>Điện trở ($R$):</strong> Sự cản trở dòng điện của vật dẫn. Đơn vị: Ôm ($\Omega$).</li>
+                            <li class="bg-yellow-50 p-3 rounded-lg border border-yellow-200">
+                                <strong>Định luật Ohm:</strong>
+                                $$I = \frac{U}{R}$$
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Lời kể Thầy Lâm -->
+                    <div class="bg-gradient-to-br from-rose-50 to-pink-100 p-6 rounded-2xl shadow-sm border border-rose-200">
+                        <h3 class="font-story font-bold text-xl text-rose-800 mb-3">Chuyện kể của Thầy Lâm</h3>
+                        <p class="font-story text-gray-700 leading-relaxed italic">
+                            "Hãy tưởng tượng một dòng sông ngầm. Các hạt <strong>Electron</strong> là những chú công nhân tí hon đang hối hả du xuân. <br><br>
+                            <strong>Hiệu điện thế ($U$)</strong> chính là Thần Gió xuân, thổi để ép các chú chạy đi.<br>
+                            <strong>Điện trở ($R$)</strong> là những tảng đá giữa đường cản bước các chú ấy.<br>
+                            Còn <strong>Cường độ dòng điện ($I$)</strong> chính là số lượng chú công nhân chạy qua cổng làng trong 1 giây. Gió xuân càng mạnh ($U$ lớn) thì chạy càng đông ($I$ lớn); đá càng to ($R$ lớn) thì chạy càng chậm ($I$ nhỏ)."
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Mô phỏng SVG -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-rose-100 flex flex-col items-center">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Mô phỏng dòng Electron</h3>
+                    <div class="w-full max-w-md bg-slate-800 rounded-xl overflow-hidden relative" style="height: 200px;">
+                        <svg id="circuit-svg" viewBox="0 0 400 200" class="w-full h-full">
+                            <!-- Pin -->
+                            <rect x="20" y="70" width="60" height="60" fill="#334155" rx="5" />
+                            <rect x="80" y="85" width="10" height="30" fill="#cbd5e1" />
+                            <text x="50" y="105" fill="white" font-size="20" font-weight="bold" text-anchor="middle">PIN</text>
+                            <text x="70" y="85" fill="#ef4444" font-size="24" font-weight="bold">+</text>
+                            <text x="30" y="85" fill="#3b82f6" font-size="24" font-weight="bold">-</text>
+                            
+                            <!-- Dây dẫn -->
+                            <path d="M 90 100 L 350 100" stroke="#94a3b8" stroke-width="20" stroke-linecap="round" />
+                            <!-- Điện trở mô phỏng -->
+                            <rect x="200" y="80" width="40" height="40" fill="#fb923c" rx="5" />
+                            <text x="220" y="105" fill="white" font-size="16" font-weight="bold" text-anchor="middle">R</text>
+
+                            <!-- Vùng chứa hạt -->
+                            <g id="electron-group"></g>
+                        </svg>
+                    </div>
+                    <div class="mt-6 flex gap-4">
+                        <button class="secondary-button" onclick="changeCurrent('slow')">Giảm U (Chậm)</button>
+                        <button class="secondary-button green" onclick="changeCurrent('fast')">Tăng U (Nhanh)</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 2: ACID - BASE - OXIDE -->
+            <div id="tab-hoa-hoc" class="tab-content max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold text-rose-800 mb-6">Trạm 2: Thế giới Acid - Base - Oxide</h2>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+                    <!-- Kiến thức -->
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-rose-100">
+                        <h3 class="text-xl font-bold text-yellow-600 mb-4 flex items-center gap-2">
+                            <span class="text-2xl">🧪</span> Tóm tắt kiến thức
+                        </h3>
+                        <ul class="space-y-4 text-gray-700">
+                            <li><strong>Acid:</strong> Phân tử nhường proton ($H^+$) trong nước. Vị chua, làm quỳ tím hóa <strong>đỏ</strong>. Vd: $HCl, H_2SO_4$.</li>
+                            <li><strong>Base (Kiềm):</strong> Phân tử nhường hydroxide ($OH^-$) trong nước. Vị chát, nhờn, làm quỳ tím hóa <strong>xanh</strong>. Vd: $NaOH, Ca(OH)_2$.</li>
+                            <li><strong>Oxide:</strong> Hợp chất của Oxygen với một nguyên tố khác.
+                                <ul class="list-disc ml-6 mt-1 text-sm">
+                                    <li>Oxide acid (vd: $CO_2$) $\rightarrow$ tạo acid.</li>
+                                    <li>Oxide base (vd: $CaO$) $\rightarrow$ tạo base.</li>
+                                </ul>
+                            </li>
+                            <li class="bg-rose-50 p-3 rounded-lg border border-rose-200">
+                                <strong>Phản ứng trung hòa:</strong> Acid + Base $\rightarrow$ Muối + Nước.<br>
+                                $$HCl + NaOH \rightarrow NaCl + H_2O$$
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Lời kể Thầy Lâm -->
+                    <div class="bg-gradient-to-br from-yellow-50 to-orange-50 p-6 rounded-2xl shadow-sm border border-yellow-200">
+                        <h3 class="font-story font-bold text-xl text-yellow-800 mb-3">Chuyện kể của Thầy Lâm</h3>
+                        <p class="font-story text-gray-700 leading-relaxed italic">
+                            "Trong vương quốc Hóa Học, có hai bộ tộc luôn đối nghịch nhau. <br>
+                            Bộ tộc <strong>Acid</strong> rất hung hăng, lúc nào cũng mang theo vũ khí là thanh kiếm $H^+$. Gặp họ là mặt mũi đỏ bừng như pháo Tết (quỳ hóa đỏ).<br>
+                            Bộ tộc <strong>Base</strong> thì mang khiên $OH^-$, tính tình trầm lặng, gặp họ thấy nhẹ nhàng xanh mát (quỳ hóa xanh).<br>
+                            Nhưng kỳ diệu thay, ngày đầu xuân, khi chiến binh Acid giáp mặt chiến binh Base, thanh kiếm $H^+$ cắm vào chiếc khiên $OH^-$, chúng biến thành <strong>Nước</strong> ($H_2O$) hiền hòa, để lại tình hữu nghị là <strong>Muối</strong>."
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Mô phỏng SVG -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-rose-100 flex flex-col items-center">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Mô phỏng Thử Giấy Quỳ (Chất chỉ thị)</h3>
+                    <div class="w-full max-w-sm flex justify-center">
+                        <svg viewBox="0 0 200 250" class="w-48 h-auto drop-shadow-lg">
+                            <!-- Bình tam giác -->
+                            <polygon points="90,20 110,20 110,60 160,220 40,220 90,60" fill="white" stroke="#94a3b8" stroke-width="4" stroke-linejoin="round"/>
+                            <!-- Mức chất lỏng -->
+                            <polygon id="chem-liquid" points="80,90 120,90 155,215 45,215" fill="#e2e8f0" opacity="0.8">
+                                <animate attributeName="opacity" values="0.7; 0.9; 0.7" dur="2s" repeatCount="indefinite" />
+                            </polygon>
+                            <!-- Giấy quỳ -->
+                            <rect id="litmus-paper" x="95" y="10" width="10" height="150" fill="#fef08a" rx="2" transform="rotate(5, 100, 10)" />
+                            <!-- Cổ bình -->
+                            <rect x="85" y="15" width="30" height="10" fill="#94a3b8" rx="2"/>
+                            <!-- Bong bóng -->
+                            <circle cx="100" cy="180" r="5" fill="white" opacity="0.5">
+                                <animate attributeName="cy" values="180; 100" dur="1.5s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="70" cy="200" r="3" fill="white" opacity="0.5">
+                                <animate attributeName="cy" values="200; 120" dur="2s" repeatCount="indefinite"/>
+                            </circle>
+                        </svg>
+                    </div>
+                    <p id="chem-status" class="mt-4 font-semibold text-gray-600 h-6">Môi trường Trung tính (Nước)</p>
+                    <div class="mt-4 flex flex-wrap justify-center gap-4">
+                        <button class="secondary-button !bg-red-100 !text-red-700 hover:!bg-red-200" onclick="simulateChem('acid')">+ Nhỏ Acid ($H^+$)</button>
+                        <button class="secondary-button !bg-blue-100 !text-blue-700 hover:!bg-blue-200" onclick="simulateChem('base')">+ Nhỏ Base ($OH^-$)</button>
+                        <button class="secondary-button !bg-gray-200 !text-gray-700 hover:!bg-gray-300" onclick="simulateChem('neutral')">Rửa bình (Nước)</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 3: DA & MẮT -->
+            <div id="tab-sinh-hoc" class="tab-content max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold text-rose-800 mb-6">Trạm 3: Cơ thể kỳ diệu - Da & Mắt</h2>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+                    <!-- Kiến thức -->
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-rose-100">
+                        <h3 class="text-xl font-bold text-yellow-600 mb-4 flex items-center gap-2">
+                            <span class="text-2xl">👁️</span> Tóm tắt kiến thức
+                        </h3>
+                        <ul class="space-y-4 text-gray-700">
+                            <li><strong>Da:</strong> Cơ quan rộng nhất. Gồm 3 lớp: Biểu bì, bì và lớp mỡ dưới da. Chức năng: bảo vệ, điều hòa thân nhiệt, cảm giác.</li>
+                            <li><strong>Mắt:</strong> Cơ quan thị giác. Cấu tạo cơ bản từ ngoài vào trong:
+                                <ul class="list-disc ml-6 mt-1 text-sm">
+                                    <li><strong>Giác mạc:</strong> Lớp màng trong suốt bảo vệ mắt.</li>
+                                    <li><strong>Thể thủy tinh (Thấu kính hội tụ):</strong> Điều tiết để hội tụ ánh sáng.</li>
+                                    <li><strong>Võng mạc (Màng lưới):</strong> Nơi ảnh của vật hiện lên rõ nét, chứa tế bào nón và tế bào que.</li>
+                                </ul>
+                            </li>
+                            <li class="bg-blue-50 p-3 rounded-lg border border-blue-200">
+                                <strong>Sự điều tiết của mắt:</strong> Thể thủy tinh phồng lên hoặc xẹp xuống để thay đổi tiêu cự ($f$), giúp ảnh luôn rơi đúng vào võng mạc.
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Lời kể Thầy Lâm -->
+                    <div class="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-2xl shadow-sm border border-blue-200">
+                        <h3 class="font-story font-bold text-xl text-blue-800 mb-3">Chuyện kể của Thầy Lâm</h3>
+                        <p class="font-story text-gray-700 leading-relaxed italic">
+                            "Lâu đài Cơ Thể được bảo vệ bởi một bức tường thành khổng lồ mang tên <strong>Da</strong>. Bức tường này thông minh đến mức biết đổ mồ hôi khi du xuân trời nóng, và dựng lông ốc lên khi gặp cơn mưa rào mùa xuân để giữ ấm.<br><br>
+                            Trên đỉnh lâu đài có hai ô cửa sổ ma thuật - <strong>Mắt</strong>. Trong ô cửa sổ ấy có một viên pha lê dẻo (Thể thủy tinh). Khi nhìn cành hoa đào ở xa, viên pha lê dẹt lại. Khi lại gần ngắm nụ hoa chúm chím, viên pha lê phồng to lên để chiếu chính xác hình ảnh lên bức tường phim (Võng mạc) phía sau."
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Mô phỏng SVG -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-rose-100 flex flex-col items-center">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Mô phỏng sự điều tiết của Thể Thủy Tinh</h3>
+                    <div class="w-full max-w-md">
+                        <svg viewBox="0 0 400 200" class="w-full h-auto bg-slate-50 rounded-lg border border-gray-200">
+                            <!-- Con mắt cơ bản -->
+                            <path d="M 200 100 C 250 20, 350 20, 380 100 C 350 180, 250 180, 200 100 Z" fill="#fdf8f6" stroke="#fb923c" stroke-width="4"/>
+                            <!-- Giác mạc -->
+                            <path d="M 200 100 C 180 60, 180 140, 200 100" fill="transparent" stroke="#38bdf8" stroke-width="4" stroke-linecap="round"/>
+                            <!-- Võng mạc (mặt sau) -->
+                            <path d="M 380 100 C 350 40, 300 30, 270 50" fill="transparent" stroke="#ef4444" stroke-width="6"/>
+                            <path d="M 380 100 C 350 160, 300 170, 270 150" fill="transparent" stroke="#ef4444" stroke-width="6"/>
+                            
+                            <!-- Thể thủy tinh -->
+                            <ellipse id="lens" cx="230" cy="100" rx="10" ry="40" fill="#bae6fd" opacity="0.8" stroke="#0284c7" stroke-width="2"/>
+                            
+                            <!-- Vật thể (Cây Hoa đào) -->
+                            <g id="object-tree" transform="translate(40, 70)">
+                                <rect x="12" y="30" width="6" height="30" fill="#78350f"/>
+                                <!-- Tán hoa đào màu hồng -->
+                                <circle cx="15" cy="15" r="20" fill="#fbcfe8"/>
+                                <circle cx="5" cy="10" r="5" fill="#f472b6"/>
+                                <circle cx="25" cy="15" r="5" fill="#f472b6"/>
+                                <circle cx="15" cy="25" r="5" fill="#f472b6"/>
+                            </g>
+
+                            <!-- Tia sáng -->
+                            <line id="ray1" x1="55" y1="85" x2="230" y2="70" stroke="#fcd34d" stroke-width="2" stroke-dasharray="5,5"/>
+                            <line id="ray2" x1="55" y1="115" x2="230" y2="130" stroke="#fcd34d" stroke-width="2" stroke-dasharray="5,5"/>
+                            <!-- Tia khúc xạ sau thấu kính -->
+                            <line id="ray-focus1" x1="230" y1="70" x2="380" y2="100" stroke="#fcd34d" stroke-width="2"/>
+                            <line id="ray-focus2" x1="230" y1="130" x2="380" y2="100" stroke="#fcd34d" stroke-width="2"/>
+                            
+                            <!-- Điểm hội tụ -->
+                            <circle id="focal-point" cx="380" cy="100" r="4" fill="#ef4444"/>
+                        </svg>
+                    </div>
+                    
+                    <div class="mt-6 w-full max-w-sm flex flex-col items-center">
+                        <label for="distance-slider" class="text-sm font-semibold text-gray-700 mb-2">Khoảng cách cành đào: <span id="distance-val" class="text-blue-600">Xa</span></label>
+                        <input type="range" id="distance-slider" min="10" max="100" value="10" class="w-full accent-rose-500" oninput="adjustEyeFocus(this.value)">
+                        <p class="text-xs text-gray-500 mt-2 text-center">Kéo thanh trượt để mang cành hoa lại gần. Thể thủy tinh sẽ tự động <strong>phồng lên</strong> để giữ ảnh rõ nét.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 4: KIỂM TRA (IFRAME) -->
+            <div id="tab-kiem-tra" class="tab-content max-w-4xl mx-auto h-full min-h-[600px]">
+                <div class="h-full flex flex-col">
+                    <div class="flex justify-between items-end mb-4">
+                        <h2 class="text-3xl font-bold text-rose-600">Lì Xì Khai Bút (Kiểm Tra Tổng Hợp)</h2>
+                    </div>
+                    
+                    <div class="bg-white p-2 rounded-2xl shadow-md border-2 border-rose-200 flex-grow relative overflow-hidden flex flex-col">
+                        <!-- Iframe nhúng bài test.html -->
+                        <iframe src="test.html" class="w-full flex-grow rounded-xl border-none bg-gray-50" title="Bài kiểm tra KHTN 8">
+                            <p>Trình duyệt của bạn không hỗ trợ iframe. Vui lòng mở trực tiếp <a href="test.html">test.html</a></p>
+                        </iframe>
+                        
+                        <!-- Fallback UI nếu không tìm thấy iframe file -->
+                        <div class="absolute inset-0 pointer-events-none flex flex-col items-center justify-center text-center p-8 opacity-20">
+                            <svg class="w-24 h-24 text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                            <h3 class="text-2xl font-bold text-gray-500">Đang tải test.html...</h3>
+                            <p class="text-gray-400 mt-2">(Đảm bảo bạn đã đặt file test.html cùng thư mục với file này)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // === 1. LOGIC TRANG BÌA ===
+        function startLearning() {
+            const cover = document.getElementById('cover-page');
+            // Thêm hiệu ứng slide up và fade out kéo dài 700ms
+            cover.classList.add('opacity-0', '-translate-y-full');
+            
+            // Xóa phần tử khỏi DOM sau khi animation kết thúc
+            setTimeout(() => {
+                cover.style.display = 'none';
+            }, 700);
+        }
+
+        // === 2. LOGIC ĐIỀU HƯỚNG TAB & MENU DI ĐỘNG ===
+        const btnHamburger = document.getElementById('hamburger-button');
+        const btnCloseMenu = document.getElementById('close-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileOverlay = document.getElementById('mobile-overlay');
+
+        function toggleMobileMenu(show) {
+            if (show) {
+                mobileMenu.classList.remove('-translate-x-full');
+                mobileOverlay.classList.remove('hidden');
+                // Nhỏ xíu delay để hiệu ứng opacity ăn khớp
+                setTimeout(() => mobileOverlay.classList.remove('opacity-0'), 10);
+            } else {
+                mobileMenu.classList.add('-translate-x-full');
+                mobileOverlay.classList.add('opacity-0');
+                setTimeout(() => mobileOverlay.classList.add('hidden'), 300);
+            }
+        }
+
+        btnHamburger.addEventListener('click', () => toggleMobileMenu(true));
+        btnCloseMenu.addEventListener('click', () => toggleMobileMenu(false));
+        mobileOverlay.addEventListener('click', () => toggleMobileMenu(false));
+
+        function switchTab(targetId) {
+            // Ẩn tất cả nội dung tab
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // Hiện tab mục tiêu
+            document.getElementById(targetId).classList.add('active');
+
+            // Cập nhật CSS cho các nút Tab Desktop
+            document.querySelectorAll('.desktop-tab').forEach(btn => {
+                if (btn.getAttribute('data-target') === targetId) {
+                    btn.classList.add('active-tab');
+                } else {
+                    btn.classList.remove('active-tab');
+                }
+            });
+
+            // Cập nhật CSS cho các nút Tab Mobile
+            document.querySelectorAll('.mobile-tab').forEach(btn => {
+                if (btn.getAttribute('data-target') === targetId) {
+                    btn.classList.add('active-mobile-tab');
+                } else {
+                    btn.classList.remove('active-mobile-tab');
+                }
+            });
+
+            // Nếu đang ở mobile, click tab xong tự động đóng menu slidebar
+            if (window.innerWidth < 1024) { // lg breakpoint in Tailwind is 1024px
+                toggleMobileMenu(false);
+            }
+
+            // Gọi lại MathJax để render lại công thức (phòng trường hợp tab ẩn không render đúng)
+            if (window.MathJax) {
+                MathJax.typesetPromise();
+            }
+        }
+
+        // === 3. LOGIC MÔ PHỎNG SVG ===
+
+        // Mô phỏng 1: Dòng điện (Electron di chuyển)
+        const electronGroup = document.getElementById('electron-group');
+        let electronSpeed = 2; // px per frame
+        let animationId;
+        const electrons = [];
+
+        // Khởi tạo hạt electron
+        for(let i=0; i<8; i++) {
+            let el = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+            el.setAttribute("r", "6");
+            el.setAttribute("fill", "#facc15");
+            // Rải đều dọc theo đường dây
+            let x = 100 + (i * 30);
+            el.setAttribute("cx", x);
+            el.setAttribute("cy", "100");
+            electronGroup.appendChild(el);
+            electrons.push({elem: el, x: x});
+        }
+
+        function animateElectrons() {
+            electrons.forEach(e => {
+                e.x += electronSpeed;
+                // Nếu chạy qua dây thì vòng lại
+                if(e.x > 340) e.x = 100;
+                e.elem.setAttribute("cx", e.x);
+            });
+            animationId = requestAnimationFrame(animateElectrons);
+        }
+        animateElectrons(); // Start loop
+
+        function changeCurrent(speedMode) {
+            if (speedMode === 'fast') {
+                electronSpeed = 5;
+            } else {
+                electronSpeed = 1;
+            }
+        }
+
+        // Mô phỏng 2: Hóa Học (Acid - Base)
+        function simulateChem(type) {
+            const liquid = document.getElementById('chem-liquid');
+            const paper = document.getElementById('litmus-paper');
+            const statusText = document.getElementById('chem-status');
+
+            if (type === 'acid') {
+                liquid.setAttribute('fill', '#fee2e2'); // Đỏ nhạt
+                paper.setAttribute('fill', '#ef4444'); // Đỏ đậm
+                statusText.innerText = "Môi trường Acid (pH < 7)";
+                statusText.className = "mt-4 font-bold text-red-600 h-6";
+            } else if (type === 'base') {
+                liquid.setAttribute('fill', '#dbeafe'); // Xanh nhạt
+                paper.setAttribute('fill', '#3b82f6'); // Xanh lam
+                statusText.innerText = "Môi trường Base (pH > 7)";
+                statusText.className = "mt-4 font-bold text-blue-600 h-6";
+            } else {
+                liquid.setAttribute('fill', '#e2e8f0'); // Xám nhạt
+                paper.setAttribute('fill', '#fef08a'); // Vàng nhạt (quỳ tím ẩm ban đầu)
+                statusText.innerText = "Môi trường Trung tính (Nước, pH ≈ 7)";
+                statusText.className = "mt-4 font-semibold text-gray-600 h-6";
+            }
+        }
+
+        // Mô phỏng 3: Sinh học (Sự điều tiết của mắt)
+        function adjustEyeFocus(val) {
+            // val từ 10 (xa) đến 100 (gần)
+            const objTree = document.getElementById('object-tree');
+            const ray1 = document.getElementById('ray1');
+            const ray2 = document.getElementById('ray2');
+            const lens = document.getElementById('lens');
+            const rayFocus1 = document.getElementById('ray-focus1');
+            const rayFocus2 = document.getElementById('ray-focus2');
+            const distanceText = document.getElementById('distance-val');
+
+            // 1. Di chuyển vật thể (Cây)
+            // Vật di chuyển từ x=40 (xa) đến x=150 (gần)
+            let newX = 40 + (val - 10) * (110 / 90); 
+            objTree.setAttribute("transform", `translate(${newX}, 70)`);
+
+            // 2. Thay đổi đường đi của tia sáng chiếu đến thấu kính
+            let rayStartX = newX + 15; // Giữa cây
+            let rayStartY1 = 70 + 15;  // Đỉnh cây tương đối
+            let rayStartY2 = 70 + 45;  // Gốc cây tương đối
+            
+            ray1.setAttribute("x1", rayStartX);
+            ray1.setAttribute("y1", rayStartY1);
+            ray2.setAttribute("x1", rayStartX);
+            ray2.setAttribute("y1", rayStartY2);
+
+            // 3. Sự điều tiết: Thể thủy tinh phồng lên khi vật gần (val cao)
+            // rx bình thường là 10. Phồng lên tối đa là 20
+            let newRx = 10 + (val - 10) * (10 / 90);
+            lens.setAttribute("rx", newRx);
+
+            // 4. Tia khúc xạ: Vì mắt điều tiết tốt, ảnh LUÔN hội tụ ở điểm 380,100 (võng mạc)
+            // Điểm chạm thấu kính có thể hơi xê dịch theo độ dày, nhưng đơn giản hóa ta giữ nguyên x2=230
+            // Nghĩa là rayFocus1 và rayFocus2 không cần đổi coordinates, chỉ cần đổi rx của lens là thể hiện được vật lý.
+
+            // 5. Cập nhật Text
+            if(val < 30) distanceText.innerText = "Xa (Thể thủy tinh dẹt)";
+            else if(val > 70) distanceText.innerText = "Gần (Thể thủy tinh phồng)";
+            else distanceText.innerText = "Vừa";
+        }
+    </script>
+</body>
+</html>
